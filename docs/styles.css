@@ -1,0 +1,14 @@
+nav.navbar a.navbar-brand {
+    background:#081b2e;
+}
+
+nav.navbar a.navbar-brand span.brand {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+nav.navbar a.navbar-brand span.brand span.part-text {
+    color: #2F8FE6;
+}
