@@ -18,25 +18,87 @@
                 </a>
             </nav>
         </header>
-        <main>
-          <h1>Documentation</h1>
-            <h3>Zero Build. Native Browser. AWS SDK v3.</h3>
-            <section class="text-center mt-5">
-                <p>
-cloud-sdk-builds simplifies the use of AWS SDK for JavaScript v3 in the browser by providing prebuilt, CDN-hosted modules. 
-Using modern import maps, developers can directly import AWS service clients like S3 without bundlers, build tools, or complex setup.
-</p>
+<main class="container text-center mt-5">
 
-<p>
-Designed for convenience and compatibility, cloud-sdk-builds enables lightweight, fast-loading applications by eliminating unnecessary dependencies 
-and allowing native ES module usage in modern browsers.
-</p>
+  <!-- Hero -->
+  <h1 class="display-5 fw-bold">Use AWS SDK v3 Directly in the Browser</h1>
+  <p class="lead mt-3">
+    No bundlers. No build tools. No setup. Just import and use.
+  </p>
 
-<p>
-Whether you're building prototypes, documentation demos, or production-ready frontends, cloud-sdk-builds helps you integrate AWS services 
-quickly and efficiently with minimal configuration.
-</p>
-            </section>
+  <h3 class="mt-4 text-primary">Zero Build. Native Browser. AWS SDK v3.</h3>
+
+  <!-- Quick Example -->
+  <section class="mt-5 text-start">
+    <h4>Get Started in Seconds</h4>
+    <p>Use AWS SDK v3 directly in your browser using import maps:</p>
+
+    <pre class="bg-dark text-light p-3 rounded"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+      &lt;head&gt;
+            &lt;meta charset=&quot;utf-8&quot;&gt;
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+            &lt;title&gt;AWS SDK v3 Browser Usage&lt;/title&gt;
+            &lt;script type=&quot;importmap&quot; crossorigin=&quot;anonymous&quot;&gt;
+                  {
+                    &quot;imports&quot;: {
+                        &quot;@aws-sdk/client-s3&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/client-s3@3.1039.0/index.min.mjs&quot;
+                    },
+                      &quot;integrity&quot;: {
+                        &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/client-s3@3.1039.0/index.min.mjs&quot;: &quot;sha384-IEEBKPnaUo6yL58nP8zpmOYQdlSZCS415Ewrfl9xG1rYsOySif98foUjwxPzDqDq&quot;
+                    }
+                  }
+            &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+            &lt;h1&gt;Hello World!&lt;/h1&gt;
+
+            &lt;script type=&quot;module&quot;&gt;
+                  import {  } from &quot;@aws-sdk/client-s3&quot;;
+                  // Refer AWS SDK for JavaScript V3 - Service Documentation
+            &lt;/script&gt;
+
+      &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+  </section>
+
+  <!-- Value Proposition -->
+  <section class="mt-5">
+    <h4>Why cloud-sdk-builds?</h4>
+    <div class="row mt-4">
+      
+      <div class="col-md-4">
+        <h5>⚡ No Build Step</h5>
+        <p>Skip Webpack, Vite, or any bundler. Use AWS SDK directly in the browser.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h5>🚀 Fast Integration</h5>
+        <p>Prebuilt modules hosted on CDN for instant usage and faster development.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h5>🌐 Native ES Modules</h5>
+        <p>Leverage modern browser capabilities with import maps and clean module imports.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Explanation -->
+  <section class="mt-5">
+    <p>
+      cloud-sdk-builds provides prebuilt AWS SDK for JavaScript v3 packages optimized for direct browser usage. 
+      Instead of installing dependencies and configuring bundlers, you can import AWS clients like S3, DynamoDB, 
+      and more directly from a CDN.
+    </p>
+
+    <p>
+      This approach is ideal for prototypes, demos, learning environments, and lightweight production applications 
+      where simplicity and speed matter.
+    </p>
+  </section>
             <section class="text-center mt-5">
                 <p>Contact<br>Vaddiraju Surya Teja<br>suryavaddiraju@gmail.com<br>+919912357965</p>
             </section>
