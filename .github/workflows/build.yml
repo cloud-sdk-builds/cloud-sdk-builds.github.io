@@ -1,4 +1,4 @@
-name: Create jsdeliver index.min.mjs script
+name: Webcontent Daily Modifier
 on:
   workflow_dispatch:
   schedule:
