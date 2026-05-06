@@ -12,3 +12,14 @@ nav.navbar a.navbar-brand span.brand {
 nav.navbar a.navbar-brand span.brand span.part-text {
     color: #2F8FE6;
 }
+
+.code-block .copy-btn {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+article#mynavigator span.current-selection {
+    background-color: #2F8FE6;
+    color: white;
+}

@@ -1,51 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>cloud-sdk-builds Documentation | AWS SDK v3 Javascript via CDN</title>
-        <link rel="canonical" href="https://cloud-sdk-builds.github.io/" />
-        <meta name="description" content="cloud-sdk-builds provides prebuilt AWS SDK for JavaScript v3 packages via CDN, enabling direct browser usage with import maps—no bundling, no build tools, just fast and simple integration." />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link href="/styles.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
-                <a class="navbar-brand" href="/">
-                    <img src="/logo.png" width="30" height="30" class="d-inline-block align-top" alt="cloud-sdk-builds Image">
-                    <span class="brand">cloud-<span class="part-text">sdk</span>-builds</span>
-                </a>
-            </nav>
-        </header>
-<main class="container text-center mt-5">
-
-  <!-- Hero -->
-  <h1 class="display-5 fw-bold">Use AWS SDK v3 Directly in the Browser</h1>
-  <p class="lead mt-3">
-    No bundlers. No build tools. No setup. Just import and use.
-  </p>
-
-  <h3 class="mt-4 text-primary">Zero Build. Native Browser. AWS SDK v3.</h3>
-
-  <!-- Quick Example -->
-  <section class="mt-5 text-start">
-    <h4>Get Started in Seconds</h4>
-    <p>Use AWS SDK v3 directly in your browser using import maps:</p>
-
-    <pre class="bg-dark text-light p-3 rounded"><code>&lt;!DOCTYPE html&gt;
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>cloud-sdk-builds Documentation | AWS SDK v3 Javascript via CDN</title>
+		<link rel="canonical" href="https://cloud-sdk-builds.github.io/" />
+		<meta name="description" content="cloud-sdk-builds provides prebuilt AWS SDK for JavaScript v3 packages via CDN, enabling direct browser usage with import maps—no bundling, no build tools, just fast and simple integration." />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.6.0/dist/css/tom-select.css" integrity="sha384-DAZhYQRWKXB3xUepD72bb6nBvjvJjkJ9AfzF6HanyRqaY049Ln2EU5BT3BwtX8Nr" crossorigin="anonymous">
+		<link href="/styles.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<nav class="navbar" aria-label="Main navigation">
+				<a class="navbar-brand" href="/">
+					<img src="/logo.png" width="30" height="30" class="d-inline-block align-top" alt="cloud-sdk-builds logo">
+					<span class="brand">cloud- <span class="part-text">sdk</span>-builds </span>
+				</a>
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link" href="https://github.com/cloud-sdk-builds" target="_blank" rel="noopener noreferrer">
+							<i class="bi bi-github" aria-hidden="true"></i> Source </a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/" target="_blank" rel="noopener noreferrer external">
+							<i class="bi bi-book-half" aria-hidden="true"></i> AWS Documentation </a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main class="container text-center mt-5">
+			<!-- Hero -->
+			<h1 class="display-5 fw-bold">Use AWS SDK v3 Directly in the Browser</h1>
+			<p class="lead mt-3"> No bundlers. No build tools. No setup. Just import and use. </p>
+			<h3 class="mt-4 text-primary">Zero Build. Native Browser. AWS SDK v3.</h3>
+			<!-- Quick Example -->
+			<section class="mt-5 text-start">
+				<div>
+					<h4>Get Started in Seconds</h4>
+					<p>Use AWS SDK v3 directly in your browser using import maps:</p>
+					<p>Just Select your @aws-sdk service and version and done. you are all set!</p>
+				</div>
+				<div id="sdk-selection" class="row">
+					<div class="col-12 col-md-6">
+						<div class="input-group mb-3">
+							<label class="input-group-text" for="sdkName">@aws-sdk/</label>
+							<select class="form-select" id="sdkName" name="sdkName">
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 ">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="sdkversion">version</label>
+                            <select class="form-select" id="sdkversion" name="sdkversion"></select>
+						</div>
+					</div>
+				</div>
+				<article id="mynavigator">
+					<p>Current Selection: <span class="current-selection">@aws-sdk/<span class="sdknamereplacer">sdkName</span> with version <span class="sdkversionreplacer"></span></span></p>
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="htmlexample-tab" data-bs-toggle="tab" data-bs-target="#htmlexample-tab-pane" type="button" role="tab" aria-controls="htmlexample-tab-pane" aria-selected="true"><i class="bi bi-filetype-html"></i> HTML Example</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="importmap-tab" data-bs-toggle="tab" data-bs-target="#importmap-tab-pane" type="button" role="tab" aria-controls="importmap-tab-pane" aria-selected="false"><i class="bi bi-braces"></i> ImportMap</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="cdnuri-tab" data-bs-toggle="tab" data-bs-target="#cdnuri-tab-pane" type="button" role="tab" aria-controls="cdnuri-tab-pane" aria-selected="false"><i class="bi bi-link-45deg"></i> CDN URI</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="srihash-tab" data-bs-toggle="tab" data-bs-target="#srihash-tab-pane" type="button" role="tab" aria-controls="srihash-tab-pane" aria-selected="false"><i class="bi bi-shield-shaded"></i> SRI Hash</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="githubrepo-tab" data-bs-toggle="tab" data-bs-target="#githubrepo-tab-pane" type="button" role="tab" aria-controls="githubrepo-tab-pane" aria-selected="false"><i class="bi bi-github" aria-hidden="true"></i> GitHub</button>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="htmlexample-tab-pane" role="tabpanel" aria-labelledby="htmlexample-tab" tabindex="0">There are 2 ways to use the AWS SDK v3 in the browser:
+							<ul>
+								<li>External Script File - Recommended</li>
+								<li>Inline Script Tag</li>
+							</ul>
+							<h5># Method 1: External Script File - Recommended</h5>
+							<p>html content - This can be inside index.html or home.html or any other HTML file</p>
+							<div class="position-relative code-block">
+							<button type="button"
+								class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+								aria-label="Copy code">
+								<i class="bi bi-copy" aria-hidden="true"></i>
+							</button>
+    						<pre class="bg-dark text-light p-3 rounded"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
       &lt;head&gt;
             &lt;meta charset=&quot;utf-8&quot;&gt;
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
             &lt;title&gt;AWS SDK v3 Browser Usage&lt;/title&gt;
+
+            &lt;!-- To Know more about importmap, refer to the MDN documentation: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap --&gt;
+
             &lt;script type=&quot;importmap&quot; crossorigin=&quot;anonymous&quot;&gt;
                   {
                     &quot;imports&quot;: {
-                        &quot;@aws-sdk/client-s3&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/client-s3@3.1039.0/index.min.mjs&quot;
+                        &quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;
                     },
                       &quot;integrity&quot;: {
-                        &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/client-s3@3.1039.0/index.min.mjs&quot;: &quot;sha384-IEEBKPnaUo6yL58nP8zpmOYQdlSZCS415Ewrfl9xG1rYsOySif98foUjwxPzDqDq&quot;
+                        &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;: &quot;<span class="urihashreplacer">srihash</span>&quot;
+                    }
+                  }
+            &lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+            &lt;h1&gt;Hello World!&lt;/h1&gt;
+
+            &lt;script type=&quot;module&quot; src=&quot;/script.mjs&quot;&gt;&lt;/script&gt;
+
+      &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+							</div>
+							<h6>javascript content</h6>
+							<p>This is a separate file named <code>script.mjs</code> but can be named anything you prefer but don't forget to update the src attribute in the script tag in above html content and also remember .mjs as file extension such that it can be treated as modules by the browser and can be used with the import statement.</p>
+        					<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+								<pre class="bg-dark text-light p-3 rounded"><code>import {  } from &quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;;
+// Refer AWS SDK for JavaScript V3 - Service Documentation
+// https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/</code></pre>
+							</div>
+							<h5># Method 2: Inline Script Tag</h5>
+							<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+    							<pre class="bg-dark text-light p-3 rounded"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+      &lt;head&gt;
+            &lt;meta charset=&quot;utf-8&quot;&gt;
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+            &lt;title&gt;AWS SDK v3 Browser Usage&lt;/title&gt;
+
+            &lt;!-- To Know more about importmap, refer to the MDN documentation: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap --&gt;
+
+            &lt;script type=&quot;importmap&quot; crossorigin=&quot;anonymous&quot;&gt;
+                  {
+                    &quot;imports&quot;: {
+                        &quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;
+                    },
+                      &quot;integrity&quot;: {
+                        &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;: &quot;<span class="urihashreplacer">srihash</span>&quot;
                     }
                   }
             &lt;/script&gt;
@@ -54,62 +161,153 @@
             &lt;h1&gt;Hello World!&lt;/h1&gt;
 
             &lt;script type=&quot;module&quot;&gt;
-                  import {  } from &quot;@aws-sdk/client-s3&quot;;
+                  import {  } from &quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;;
                   // Refer AWS SDK for JavaScript V3 - Service Documentation
+                  // https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/
             &lt;/script&gt;
 
       &lt;/body&gt;
-&lt;/html&gt;
-    </code></pre>
-  </section>
+&lt;/html&gt;</code></pre>
+							</div>
+  						</div>
+  						<div class="tab-pane fade" id="importmap-tab-pane" role="tabpanel" aria-labelledby="importmap-tab" tabindex="0">
+    						<p>An import map allows you to define how module specifiers are resolved in the browser, enabling you to use clean import statements without relying on a build step. By mapping package names (such as @aws-sdk/<span class="sdknamereplacer">sdkName</span>) to versioned CDN URLs, you ensure consistent and predictable module loading. The import map must be declared inside a <code>&lt;script type=&quot;importmap&quot;&gt;</code> tag within the <code>&lt;head&gt;</code> section of your HTML document so that it is available before any module scripts are executed. Refer <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/script/type/importmap" target="_blank" rel="noopener noreferrer external">MDN documentation</a>.</p>
+  							<h6># html tag</h6>
+							<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+  								<pre class="bg-dark text-light p-3 rounded"><code>&lt;script type=&quot;importmap&quot; crossorigin=&quot;anonymous&quot;&gt;
+    {
+      &quot;imports&quot;: {
+          &quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;
+      },
+        &quot;integrity&quot;: {
+          &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;: &quot;<span class="urihashreplacer">srihash</span>&quot;
+      }
+    }
+&lt;/script&gt;</code></pre>
+							</div>
+							<h6># imports line</h6>
+							<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+								<pre class="bg-dark text-light p-3 rounded"><code>&quot;@aws-sdk/<span class="sdknamereplacer">sdkName</span>&quot;: &quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;</code></pre>
+							</div>
+							<h6># integrity line</h6>
+        					<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+								<pre class="bg-dark text-light p-3 rounded"><code>&quot;https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs&quot;: &quot;<span class="urihashreplacer">srihash</span>&quot;</code></pre></div>
+  							</div>
+  							<div class="tab-pane fade" id="cdnuri-tab-pane" role="tabpanel" aria-labelledby="cdnuri-tab" tabindex="0">The CDN URI provides a direct, versioned link to the prebuilt JavaScript module that can be used in browser-based applications without any bundling or compilation. These files are optimized using modern build tools (such as webpack in production mode) to ensure minification, performance, and compatibility. By using a versioned CDN URL, you benefit from aggressive caching and deterministic behavior, ensuring that your application always loads the exact version you specify.
+								<h5>CDN URI</h5>
+								<div class="position-relative code-block">
+									<button type="button"
+										class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+										aria-label="Copy code">
+										<i class="bi bi-copy" aria-hidden="true"></i>
+									</button>
+    								<pre class="bg-dark text-light p-3 rounded"><code>https://cdn.jsdelivr.net/gh/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>@<span class="sdkversionreplacer">version</span>/index.min.mjs</code></pre>
+								</div>
+							</div>
+  							<div class="tab-pane fade" id="srihash-tab-pane" role="tabpanel" aria-labelledby="srihash-tab" tabindex="0">Subresource Integrity (SRI) ensures that the file loaded from a CDN has not been altered or tampered with. Each distributed file is associated with a cryptographic hash (e.g., sha384-...) that the browser uses to verify its integrity at runtime. If the fetched resource does not match the expected hash, the browser will reject it, preventing potentially malicious code from being executed. This provides an additional layer of security when loading third-party resources. Refer <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/integrity" target="_blank" rel="noopener noreferrer external">MDN documentation</a>.
+								<h5>SRI Hash</h5>
+            					<div class="position-relative code-block">
+								<button type="button"
+									class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+									aria-label="Copy code">
+									<i class="bi bi-copy" aria-hidden="true"></i>
+								</button>
+    							<pre class="bg-dark text-light p-3 rounded"><code><span class="urihashreplacer">srihash</span></code></pre>
+  
+							</div>
+  </div>
+  <div class="tab-pane fade" id="githubrepo-tab-pane" role="tabpanel" aria-labelledby="githubrepo-tab" tabindex="0">The source code for this package is maintained on <i class="bi bi-github" aria-hidden="true"></i> GitHub, where you can explore the implementation, review changes, and contribute to the project. The repository contains the original module sources along with the build configuration used to generate the distributed files. Each release is versioned and tagged, allowing you to reference specific versions directly. The CDN files correspond to these tagged versions, ensuring transparency and traceability between the published artifacts and their source code.
+    
+    <h5># GitHub Repository</h5>
+    <div class="position-relative code-block">
+      <button type="button"
+          class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+          aria-label="Copy code">
+          <i class="bi bi-copy" aria-hidden="true"></i>
+      </button>
+    <pre class="bg-dark text-light p-3 rounded"><code>https://github.com/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span></code></pre></div>
+    <h5># Current Version File</h5>
+        <div class="position-relative code-block">
+      <button type="button"
+          class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+          aria-label="Copy code">
+          <i class="bi bi-copy" aria-hidden="true"></i>
+      </button>
+    
+    <pre class="bg-dark text-light p-3 rounded"><code>https://github.com/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>/blob/<span class="sdkversionreplacer">version</span>/index.min.mjs</code></pre></div>
 
-  <!-- Value Proposition -->
-  <section class="mt-5">
-    <h4>Why cloud-sdk-builds?</h4>
-    <div class="row mt-4">
-      
-      <div class="col-md-4">
-        <h5>⚡ No Build Step</h5>
-        <p>Skip Webpack, Vite, or any bundler. Use AWS SDK directly in the browser.</p>
-      </div>
+     <h5># Latest Version File</h5>
+            <div class="position-relative code-block">
+      <button type="button"
+          class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+          aria-label="Copy code">
+          <i class="bi bi-copy" aria-hidden="true"></i>
+      </button>
+    <pre class="bg-dark text-light p-3 rounded"><code>https://github.com/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>/blob/main/index.min.mjs</code></pre>
+  </div>
 
-      <div class="col-md-4">
-        <h5>🚀 Fast Integration</h5>
-        <p>Prebuilt modules hosted on CDN for instant usage and faster development.</p>
-      </div>
-
-      <div class="col-md-4">
-        <h5>🌐 Native ES Modules</h5>
-        <p>Leverage modern browser capabilities with import maps and clean module imports.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Explanation -->
-  <section class="mt-5">
-    <p>
-      cloud-sdk-builds provides prebuilt AWS SDK for JavaScript v3 packages optimized for direct browser usage. 
-      Instead of installing dependencies and configuring bundlers, you can import AWS clients like S3, DynamoDB, 
-      and more directly from a CDN.
-    </p>
-
-    <p>
-      This approach is ideal for prototypes, demos, learning environments, and lightweight production applications 
-      where simplicity and speed matter.
-    </p>
-  </section>
-            <section class="text-center mt-5">
-                <p>Contact<br>Vaddiraju Surya Teja<br>suryavaddiraju@gmail.com<br>+919912357965</p>
-            </section>
-        </main>
-        <footer class="text-center mt-4">
-            <p>&copy; 2026 cloud-sdk-builds. All rights reserved.</p>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-        <script type="module" src="/script.mjs"></script>
-        <script async type="text/javascript" src="https://www.googletagmanager.com/gtm.js?id=GTM-KJ693FRD"></script>
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJ693FRD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    </body>
+    <h5># Raw File</h5>
+            <div class="position-relative code-block">
+      <button type="button"
+          class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2 copy-btn"
+          aria-label="Copy code">
+          <i class="bi bi-copy" aria-hidden="true"></i>
+      </button>
+    <pre class="bg-dark text-light p-3 rounded"><code>https://raw.githubusercontent.com/cloud-sdk-builds/<span class="sdknamereplacer">sdkName</span>/refs/tags/<span class="sdkversionreplacer">version</span>/index.min.mjs</code></pre>
+  </div>
+</div>
+</article>
+			</section>
+			<!-- Value Proposition -->
+			<section id="main-content" class="mt-5">
+				<h4>Why cloud-sdk-builds?</h4>
+				<div class="row mt-4">
+					<div class="col-md-4">
+						<h5>⚡ No Build Step</h5>
+						<p>Skip Webpack, Vite, or any bundler. Use AWS SDK directly in the browser.</p>
+					</div>
+					<div class="col-md-4">
+						<h5>🚀 Fast Integration</h5>
+						<p>Prebuilt modules hosted on CDN for instant usage and faster development.</p>
+					</div>
+					<div class="col-md-4">
+						<h5>🌐 Native ES Modules</h5>
+						<p>Leverage modern browser capabilities with import maps and clean module imports.</p>
+					</div>
+				</div>
+			</section>
+			<!-- Explanation -->
+			<section class="mt-5">
+				<p> cloud-sdk-builds makes AWS SDK v3 available directly in the browser - no bundlers, no build step, no Node.js required. Just drop an import map into your HTML and start using S3, DynamoDB, Lambda, and more as native ES modules, served from a global CDN with SRI integrity hashes for security. </p>
+			</section>
+			<section class="text-center mt-5">
+				<p>Contact <br>Vaddiraju Surya Teja <br>suryavaddiraju@gmail.com <br>+919912357965 </p>
+			</section>
+		</main>
+		<footer class="text-center mt-4">
+			<p>&copy; 2026 cloud-sdk-builds. All rights reserved.</p>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/tom-select@2.6.0/dist/js/tom-select.complete.min.js" integrity="sha384-A/OhuVi7Pu3OK0LZqDw5rUUVpqZdcqxIyZTjfjxT0v8Y3VsdpFvQChtHCOSobZTL" crossorigin="anonymous"></script>
+		<script type="module" src="/script.mjs"></script>
+		<script async type="text/javascript" src="https://www.googletagmanager.com/gtm.js?id=GTM-M34WCR46"></script>
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M34WCR46" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+	</body>
 </html>
