@@ -39,10 +39,11 @@ async function getreleases(repo,page=1){
         resource[repo][release.tag_name] = hash[0];
         appendFileSync(sitemaploc,
 `   <url>
-        <loc>https://${owner}.github.io/?sdk=${repo}&version=${release.tag_name}</loc>
+        <loc>https://${owner}.github.io/?sdk=${repo}&amp;version=${release.tag_name}</loc>
         <lastmod>${release.published_at}</lastmod>
         <changefreq>never</changefreq>
-    </url>`);
+    </url>
+`);
     }
     if (response.length === 100) {
         await getreleases(repo, page + 1);
@@ -60,7 +61,8 @@ writeFileSync(sitemaploc, `<?xml version="1.0" encoding="UTF-8"?>
     <url>
         <loc>${urlpagedom}</loc>
         <changefreq>daily</changefreq>
-    </url>`, "utf-8");
+    </url>
+`, "utf-8");
 
 for (let i = 0; i < repos.length; i += 80) {
     const batch = repos.slice(i, i + 80);
