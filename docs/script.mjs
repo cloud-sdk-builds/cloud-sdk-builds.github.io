@@ -84,7 +84,7 @@ versionselect.addEventListener("change", (event) => {
 changepackage(selectedSdk, selectedVersion);
 function changecontent(selectedSdk, selectedVersion) {
     canonicallink["href"] = `https://cloud-sdk-builds.github.io/?sdk=${selectedSdk}&version=${selectedVersion}`;
-    metadesc["content"] = `"@aws-sdk/${selectedSdk} v${selectedVersion} - Prebuilt for JavaScript v3 via CDN with import maps, no bundling or build tools, just fast browser integration of aws packages"`;
+    metadesc["content"] = `@aws-sdk/${selectedSdk} v${selectedVersion} - Prebuilt for JavaScript v3 via CDN with import maps, no bundling or build tools, just fast browser integration of aws packages`;
     const url = new URL(window.location.href);
     url.searchParams.set("sdk", selectedSdk);
     url.searchParams.set("version", selectedVersion);
