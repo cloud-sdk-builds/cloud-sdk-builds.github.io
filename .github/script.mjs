@@ -43,22 +43,6 @@ async function getreleases(repo,page=1){
         <lastmod>${release.published_at}</lastmod>
         <changefreq>never</changefreq>
     </url>
-<url>
-        <loc>${urlpagedom}contact.html</loc>
-        <changefreq>never</changefreq>
-    </url>
-<url>
-        <loc>${urlpagedom}privacy.html</loc>
-        <changefreq>never</changefreq>
-    </url>
-<url>
-        <loc>${urlpagedom}terms.html</loc>
-        <changefreq>never</changefreq>
-    </url>
-<url>
-        <loc>${urlpagedom}about.html</loc>
-        <changefreq>never</changefreq>
-    </url>
 `);
     }
     if (response.length === 100) {
@@ -77,6 +61,22 @@ writeFileSync(sitemaploc, `<?xml version="1.0" encoding="UTF-8"?>
     <url>
         <loc>${urlpagedom}</loc>
         <changefreq>daily</changefreq>
+    </url>
+<url>
+        <loc>${urlpagedom}contact.html</loc>
+        <changefreq>never</changefreq>
+    </url>
+<url>
+        <loc>${urlpagedom}privacy.html</loc>
+        <changefreq>never</changefreq>
+    </url>
+<url>
+        <loc>${urlpagedom}terms.html</loc>
+        <changefreq>never</changefreq>
+    </url>
+<url>
+        <loc>${urlpagedom}about.html</loc>
+        <changefreq>never</changefreq>
     </url>
 `, "utf-8");
 
