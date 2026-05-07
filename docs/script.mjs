@@ -4,6 +4,8 @@ window['dataLayer'].push({
     'gtm.start': new Date().getTime(),
     event: 'gtm.js'
 });
+const canonicallink = document.querySelector("head link[rel='canonical']");
+const metadesc = document.querySelector("head meta[name='description']");
 const urlParams = new URLSearchParams(window.location.search);
 const defaultsdk = "client-s3";
 let selectedSdk = urlParams.get('sdk');
@@ -81,31 +83,33 @@ versionselect.addEventListener("change", (event) => {
 
 changepackage(selectedSdk, selectedVersion);
 function changecontent(selectedSdk, selectedVersion) {
-const url = new URL(window.location.href);
-url.searchParams.set("sdk", selectedSdk);
-url.searchParams.set("version", selectedVersion);
-history.pushState({"sdk": selectedSdk, "version": selectedVersion}, "", url);
+    canonicallink["href"] = `https://cloud-sdk-builds.github.io/?sdk=${selectedSdk}&version=${selectedVersion}`;
+    metadesc["content"] = `"@aws-sdk/${selectedSdk} v${selectedVersion} - Prebuilt for JavaScript v3 via CDN with import maps, no bundling or build tools, just fast browser integration of aws packages"`;
+    const url = new URL(window.location.href);
+    url.searchParams.set("sdk", selectedSdk);
+    url.searchParams.set("version", selectedVersion);
+    history.pushState({"sdk": selectedSdk, "version": selectedVersion}, "", url);
 
 
 
-const sdkreplacerels = mynavigator.querySelectorAll("span.sdkversionreplacer");
-if (sdkreplacerels) {
-    sdkreplacerels.forEach(el => {
-        el.innerText = selectedVersion;
-    });
-}
-const urihashreplacerels = mynavigator.querySelectorAll("span.urihashreplacer");
-if (urihashreplacerels) {
-    urihashreplacerels.forEach(el => {
-        el.innerText = packages[selectedSdk][selectedVersion];
-    });
-}
-const sdknamereplacerels = mynavigator.querySelectorAll("span.sdknamereplacer");
-if (sdknamereplacerels) {
-    sdknamereplacerels.forEach(el => { 
-        el.innerText = selectedSdk;
-    });
-}
+    const sdkreplacerels = mynavigator.querySelectorAll("span.sdkversionreplacer");
+    if (sdkreplacerels) {
+        sdkreplacerels.forEach(el => {
+            el.innerText = selectedVersion;
+        });
+    }
+    const urihashreplacerels = mynavigator.querySelectorAll("span.urihashreplacer");
+    if (urihashreplacerels) {
+        urihashreplacerels.forEach(el => {
+            el.innerText = packages[selectedSdk][selectedVersion];
+        });
+    }
+    const sdknamereplacerels = mynavigator.querySelectorAll("span.sdknamereplacer");
+    if (sdknamereplacerels) {
+        sdknamereplacerels.forEach(el => { 
+            el.innerText = selectedSdk;
+        });
+    }
 }
 
 function copycode(event) {
