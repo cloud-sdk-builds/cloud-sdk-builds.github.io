@@ -1,9 +1,4 @@
 import { packages } from "./packages.mjs";
-window['dataLayer'] = window['dataLayer'] || [];
-window['dataLayer'].push({
-    'gtm.start': new Date().getTime(),
-    event: 'gtm.js'
-});
 const canonicallink = document.querySelector("head link[rel='canonical']");
 const metadesc = document.querySelector("head meta[name='description']");
 const urlParams = new URLSearchParams(window.location.search);
